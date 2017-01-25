@@ -8,7 +8,7 @@ namespace Project.Code
 {
     public class StudentContainer
     {
-        List<Student> student = new List<Student>();
+        List<Student> Student = new List<Student>();
         private static StudentContainer instance;
         private StudentContainer() { }
         
@@ -26,11 +26,11 @@ namespace Project.Code
 
         public void AddStud(Student stud)
         {
-            student.Add(stud);
+            Student.Add(stud);
         }
         public List<Student> GetList()
         {
-            return student;
+            return Student;
         }
     }
 }

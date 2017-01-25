@@ -11,7 +11,7 @@ namespace Project.Code
         /// <summary>
         /// Student gpa
         /// </summary>
-        public float gpa { get; set; }
+        public float Gpa { get; set; }
        
     }
 }

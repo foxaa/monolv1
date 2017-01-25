@@ -8,9 +8,9 @@ namespace Project.Code
 {
     public class StudentIdGenerator
     {
-        private int id = 0;
+        int id = 0;
         private static StudentIdGenerator instance;
-        private StudentIdGenerator() { id = 1; }
+        private StudentIdGenerator() { }
         public static StudentIdGenerator Inst
         {
             get
