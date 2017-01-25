@@ -8,6 +8,9 @@ namespace Project.Code
 {
     public class Student:Person
     {
+        /// <summary>
+        /// Student gpa
+        /// </summary>
         public float gpa { get; set; }
        
     }
