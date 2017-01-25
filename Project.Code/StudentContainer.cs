@@ -30,7 +30,17 @@ namespace Project.Code
         }
         public List<Student> GetList()
         {
-            return Student;
+            return SortList(Student);
+        }
+        public List<Student> SortList(List<Student> stud)
+        {
+            /*stud.Sort(delegate (Student x, Student y)
+             {
+                 return x.Surname.CompareTo(y.Surname);
+             }); */
+            return stud.OrderBy(a => a.Surname).ToList();
+            //stud.Sort((x, y) => string.Compare(x.Surname, y.Surname));
+
         }
     }
 }

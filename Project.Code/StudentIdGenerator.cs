@@ -8,24 +8,24 @@ namespace Project.Code
 {
     public class StudentIdGenerator
     {
-        int id = 0;
-        private static StudentIdGenerator instance;
+        int ID = 0;
+        private static StudentIdGenerator Instance;
         private StudentIdGenerator() { }
         public static StudentIdGenerator Inst
         {
             get
             {
-                if(instance==null)
+                if(Instance==null)
                 {
-                    instance = new StudentIdGenerator();
+                    Instance = new StudentIdGenerator();
 
                 }
-                return instance;
+                return Instance;
             }
         }
-        public int incId()
+        public int IncId()
         {
-            return id++;
+            return ID++;
         }
     }
 }

@@ -13,12 +13,10 @@ namespace Project.App
         {
             Validation Val = new Validation();
             string Operation;
-            bool Comp5 = true;
+            bool IsDisplay = true;
             do
             {
-                do
-                {
-                    Comp5 = false;
+                    IsDisplay = false;
                     Console.WriteLine("Insert operation:");
                     Operation = Console.ReadLine();
                     /*if(operation.Equals(Operations.operation1))
@@ -35,23 +33,42 @@ namespace Project.App
                         Console.WriteLine("Insert operation:");
                         operation = Console.ReadLine();
                     }*/
-                    Val.checkOperation(Operation);
-                    if (Val.Comp1) { Enlist(); }
-                    else if (Val.Comp2) {
+                    Val.CheckOperation(Operation);
+                    if (Val.Enlist) { Enlist(); }
+                    else if (Val.Display) {
                         Display();
-                        Comp5 = true;
+                        IsDisplay = true;
                     }
 
-                } while (!Val.Comp3);
-
-            }while(!Comp5);
+            }while(!IsDisplay);
         }
+
+        /*public static void Mock()
+        {
+            Validation Val = new Validation();
+            StudentContainer Stuc = StudentContainer.Inst;
+            StudentIdGenerator SiD = StudentIdGenerator.Inst;
+
+            for(int i = 0; i < 5; i++)
+            {
+                Student s = new Student()
+                {
+                    Id = SiD.incId(),
+                    Name = "name"+i,
+                    Surname = "surname"+i,
+                };
+                Stuc.AddStud(s);
+            }
+            
+        }*/
+
         public static void Enlist()
         {
             Validation Val = new Validation();
             Student Stud = new Student();
             StudentContainer Stuc = StudentContainer.Inst;
             StudentIdGenerator SiD = StudentIdGenerator.Inst;
+
             string name;
             string surname;
             string gpa;
@@ -59,36 +76,36 @@ namespace Project.App
             {
                 Console.WriteLine("Insert name:");
                 name = Console.ReadLine();
-                Val.checkInput(name);
+                Val.CheckInput(name);
 
-            } while (!Val.Comp3);
+            } while (!Val.ValidInput);
             do
             {
                 Console.WriteLine("Insert surname:");
                 surname = Console.ReadLine();
-                Val.checkInput(surname);
-            } while (!Val.Comp3);
+                Val.CheckInput(surname);
+            } while (!Val.ValidInput);
             do
             {
                 Console.WriteLine("Insert GPA:");
                 gpa = Console.ReadLine();
-                Val.checkGPA(gpa);
-            } while (!Val.Comp3);
+                Val.CheckGPA(gpa);
+            } while (!Val.ValidInput);
             Stud.Name = name;
             Stud.Surname = surname;
             Stud.Gpa = float.Parse(gpa);
-            Stud.Id = SiD.incId();
+            Stud.Id = SiD.IncId();
             Stuc.AddStud(Stud);
         }
         public static void Display()
         {
 
             //Student stud = new Student();
-            StudentContainer Stucos = StudentContainer.Inst;
-            List<Student> People = Stucos.GetList();
-            StudentIdGenerator Sid = StudentIdGenerator.Inst;
+            StudentContainer StuContain = StudentContainer.Inst;
+            List<Student> People = StuContain.GetList();
+            // StudentIdGenerator Sid = StudentIdGenerator.Inst;
 
-            
+
             //Console.WriteLine("dad");
             /*people.foreach(Student stud in people)
             {
@@ -97,11 +114,12 @@ namespace Project.App
                 
             }*/
             //people.Sort();
-            People.Sort(delegate (Student x, Student y)
+            /*People.Sort(delegate (Student x, Student y)
                 {
                     return x.Surname.CompareTo(y.Surname);
-                });
-
+                });*/
+            //Stucos.SortList(People);
+            
             for (int i = 0; i < People.Count; i++)
             {
                 Console.WriteLine(People[i].Id+ ". " + People[i].Name + ' ' + People[i].Surname + ' ' + People[i].Gpa);

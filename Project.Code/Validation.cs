@@ -8,57 +8,57 @@ namespace Project.Code
 {
     public class Validation
     {
-        public bool Comp1;
-        public bool Comp2;
-        public bool Comp3 = false;
+        public bool Enlist;
+        public bool Display;
+        public bool ValidInput = false;
         public double Temp;
 
-        public void checkOperation(string operation)
+        public void CheckOperation(string operation)
         {
-            Comp1 = string.Equals(operation, Operations.Operation1, StringComparison.CurrentCultureIgnoreCase);
-            Comp2 = string.Equals(operation, Operations.Operation2, StringComparison.CurrentCultureIgnoreCase);
-            if (!Comp1 && !Comp2)
+           Enlist = string.Equals(operation, Operations.OPERATION1, StringComparison.CurrentCultureIgnoreCase);
+            Display = string.Equals(operation, Operations.OPERATION2, StringComparison.CurrentCultureIgnoreCase);
+            if (!Enlist && !Display)
             {
                 Console.WriteLine("Wrong operation name");
-                Comp3 = false;
+                ValidInput = false;
             }
             else if (String.IsNullOrEmpty(operation))
             {
                 Console.WriteLine("Insert operation name:");
-                Comp3 = false;
+                ValidInput = false;
             }
             else
-                Comp3 = true;
+                ValidInput = true;
 
         }
-        public void checkInput(string input)
+        public void CheckInput(string input)
         {
        
             if(String.IsNullOrEmpty(input))
             {
                 Console.WriteLine("Input incorrect");
-                Comp3 = false;
+                ValidInput = false;
             }
             else
             {
-                Comp3 = true;
+                ValidInput = true;
             }
         }
-        public void checkGPA(string gpa)
+        public void CheckGPA(string gpa)
         {
             if(String.IsNullOrEmpty(gpa))
             {
                 Console.WriteLine("Insert GPA value:");
-                Comp3 = false;
+                ValidInput = false;
             }
-            else if (double.TryParse(gpa, out Temp) && Temp >= 1 && Temp <= 5)
+            else if (double.TryParse(gpa, out Temp) && Temp >= 2 && Temp <= 5)
             {
-                Comp3 = true;
+                ValidInput = true;
             }
             else
             {
-                Console.WriteLine("Must insert a numerical value.");
-                Comp3 =false;
+                Console.WriteLine("Must insert a numerical value between 2 and 5.");
+                ValidInput =false;
             }
 
         }
